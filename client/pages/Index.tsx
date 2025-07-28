@@ -1,4 +1,5 @@
 import SimpleRive from '../components/SimpleRive';
+import FAQSection from '../components/FAQSection';
 
 export default function Index() {
   return (
@@ -46,9 +47,12 @@ export default function Index() {
       </div>
 
       {/* RIVE COMPONENT */}
-      <div className="mt-8 flex justify-center">
+      <div className="flex justify-center">
         <SimpleRive />
       </div>
+
+      {/* FAQ SECTION */}
+      <FAQSection />
     </div>
   );
 }

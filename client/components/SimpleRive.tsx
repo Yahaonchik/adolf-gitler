@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Rive, Layout, Fit, Alignment } from '@rive-app/canvas';
-import EnhancedModal from './EnhancedModal';
+import RepairPrices from './RepairPrices';
 
 interface ProblemData {
   title: string;
@@ -11,12 +11,12 @@ interface ProblemData {
 export default function SimpleRive() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const riveInstanceRef = useRef<Rive | null>(null);
-  const [activeModal, setActiveModal] = useState<number | null>(null);
+  const [selectedProblem, setSelectedProblem] = useState<number | null>(null);
 
   const problemsData: Record<number, ProblemData> = {
     1: {
       title: "🚪 Проблема с дверцей",
-      description: "Дверца не открывается или не закрывается",
+      description: "Двер��а не открывается или не закрывается",
       color: "from-red-500 to-red-700"
     },
     2: {
@@ -46,7 +46,7 @@ export default function SimpleRive() {
     },
     21: {
       title: "🚪 Дверца не открывается",
-      description: "Дверца заблокирована и не открывается после стирки",
+      description: "Дверца заблокирована и не отк��ывается после стирки",
       color: "from-red-600 to-red-800"
     },
     22: {
@@ -98,11 +98,11 @@ export default function SimpleRive() {
 
   const openProblemOverlay = (problemId: number) => {
     console.log(`🔧 Opening problem ${problemId} overlay`);
-    setActiveModal(problemId);
+    setSelectedProblem(problemId);
   };
 
-  const closeModal = () => {
-    setActiveModal(null);
+  const closePriceFrame = () => {
+    setSelectedProblem(null);
   };
 
   useEffect(() => {
@@ -285,7 +285,7 @@ export default function SimpleRive() {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       <canvas
         ref={canvasRef}
         className="rive-canvas"
@@ -297,15 +297,11 @@ export default function SimpleRive() {
         height={1500}
       />
 
-      {/* ENHANCED MODAL */}
-      {activeModal && problemsData[activeModal] && (
-        <EnhancedModal
-          isOpen={!!activeModal}
-          onClose={closeModal}
-          problemData={problemsData[activeModal]}
-          problemId={activeModal}
-        />
-      )}
-    </>
+      {/* REPAIR PRICES FRAME */}
+      <RepairPrices
+        selectedProblem={selectedProblem}
+        onClose={closePriceFrame}
+      />
+    </div>
   );
 }
