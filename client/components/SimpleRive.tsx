@@ -31,7 +31,7 @@ export default function SimpleRive() {
     },
     4: {
       title: "🔇 Проблема с шумом",
-      description: "Машина издает странные звуки",
+      description: "Машина издает странные зв��ки",
       color: "from-purple-500 to-purple-700"
     },
     5: {
@@ -43,6 +43,56 @@ export default function SimpleRive() {
       title: "⏰ Проблема с программами",
       description: "Программы не запускаются или зависают",
       color: "from-indigo-500 to-indigo-700"
+    },
+    21: {
+      title: "🚪 Дверца не открывается",
+      description: "Дверца заблокирована и не открывается после стирки",
+      color: "from-red-600 to-red-800"
+    },
+    22: {
+      title: "💧 Не набирает воду",
+      description: "Машинка не набирает воду в начале цикла стирки",
+      color: "from-blue-600 to-blue-800"
+    },
+    23: {
+      title: "💨 Не отжимает",
+      description: "Белье остается мокрым после завершения программы",
+      color: "from-cyan-600 to-cyan-800"
+    },
+    24: {
+      title: "⏸️ Зависает на программе",
+      description: "Стиральная ма��ина останавливается в процессе стирки",
+      color: "from-yellow-600 to-yellow-800"
+    },
+    25: {
+      title: "🌊 Вода не сливается",
+      description: "После стирки в барабане остается вода",
+      color: "from-teal-600 to-teal-800"
+    },
+    26: {
+      title: "🥁 Не крутит барабан",
+      description: "Барабан не вращается во время стирки",
+      color: "from-gray-600 to-gray-800"
+    },
+    27: {
+      title: "🔥 Не нагревает воду",
+      description: "Вода остается холодной во время стирки",
+      color: "from-orange-600 to-orange-800"
+    },
+    28: {
+      title: "💦 Протекает",
+      description: "Из машинки вытекает вода на пол",
+      color: "from-blue-700 to-blue-900"
+    },
+    29: {
+      title: "🔊 Шумит при отжиме",
+      description: "Во время отжима машинка издает громкие звуки",
+      color: "from-purple-700 to-purple-900"
+    },
+    30: {
+      title: "⚡ Не включается",
+      description: "Стиральная машина не реагирует на нажатие кнопок",
+      color: "from-red-700 to-red-900"
     }
   };
 
@@ -116,7 +166,7 @@ export default function SimpleRive() {
           });
         }
 
-        // Глубокая проверка всех свойств
+        // Глубокая проверка ��сех свойств
         for (const [key, value] of Object.entries(event)) {
           console.log(`📋 ${key} (${typeof value}):`, value);
           if (value && typeof value === 'object' && !Array.isArray(value)) {
@@ -156,29 +206,37 @@ export default function SimpleRive() {
         if (str.includes('Timeline')) {
           console.log('🎯 TIMELINE FOUND:', str);
 
-          // Timeline 22-30 для модальных окон (НЕ Timeline 5-7 которые срабатывают при наведении)
-          if (str === 'Timeline 22') {
-            console.log('🚪 Timeline 22 - Opening problem 1!');
-            openProblemOverlay(1);
+          // Timeline 21-30 для модальных окон (НЕ Timeline 5-7 которые срабатывают при наведении)
+          if (str === 'Timeline 21') {
+            console.log('🚪 Timeline 21 - Opening problem 21!');
+            openProblemOverlay(21);
+          } else if (str === 'Timeline 22') {
+            console.log('💧 Timeline 22 - Opening problem 22!');
+            openProblemOverlay(22);
           } else if (str === 'Timeline 23') {
-            console.log('💧 Timeline 23 - Opening problem 2!');
-            openProblemOverlay(2);
+            console.log('💨 Timeline 23 - Opening problem 23!');
+            openProblemOverlay(23);
           } else if (str === 'Timeline 24') {
-            console.log('⚡ Timeline 24 - Opening problem 3!');
-            openProblemOverlay(3);
+            console.log('⏸️ Timeline 24 - Opening problem 24!');
+            openProblemOverlay(24);
           } else if (str === 'Timeline 25') {
-            console.log('🔇 Timeline 25 - Opening problem 4!');
-            openProblemOverlay(4);
+            console.log('🌊 Timeline 25 - Opening problem 25!');
+            openProblemOverlay(25);
           } else if (str === 'Timeline 26') {
-            console.log('🌡️ Timeline 26 - Opening problem 5!');
-            openProblemOverlay(5);
+            console.log('🥁 Timeline 26 - Opening problem 26!');
+            openProblemOverlay(26);
           } else if (str === 'Timeline 27') {
-            console.log('⏰ Timeline 27 - Opening problem 6!');
-            openProblemOverlay(6);
-          } else if (str.match(/Timeline (2[8-9]|30)/)) {
-            // Timeline 28-30 для будущих дополнительных проблем
-            const timelineNum = str.match(/Timeline (\d+)/)?.[1];
-            console.log(`📊 Timeline ${timelineNum} - Reserved for future problems`);
+            console.log('🔥 Timeline 27 - Opening problem 27!');
+            openProblemOverlay(27);
+          } else if (str === 'Timeline 28') {
+            console.log('💦 Timeline 28 - Opening problem 28!');
+            openProblemOverlay(28);
+          } else if (str === 'Timeline 29') {
+            console.log('🔊 Timeline 29 - Opening problem 29!');
+            openProblemOverlay(29);
+          } else if (str === 'Timeline 30') {
+            console.log('⚡ Timeline 30 - Opening problem 30!');
+            openProblemOverlay(30);
           } else {
             console.log('📊 Other Timeline (ignored):', str);
           }
